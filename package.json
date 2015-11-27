@@ -1,6 +1,6 @@
 {
   "name": "react-mousetrap-mixin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React mixin for mousetrap",
   "main": "index.js",
   "scripts": {
