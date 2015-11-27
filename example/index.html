@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React mousetrap mixin</title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+  <a href="https://github.com/georgeosddev/react-mousetrap-mixin"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>React mousetrap component & mixin</h1>
+      </div>
+      <p class="lead">Reusable component and mixin for <a href='https://github.com/ccampbell/mousetrap'>mousetrap</a></p>
+      <h4>Component Usage <span class="small"><a href='./componentExample.html'>componentExample Demo</a></span></h4>
+
+      <pre><code class="lang-javascript hljs axapta">import React from <span class="hljs-string">'react'</span>;
+import Mousetrap from <span class="hljs-string">'react-mousetrap-mixin'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-inheritance"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> {</span>
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {}
+  }
+
+  render() {
+    let mousetrap = {
+      <span class="hljs-string">'up up down down left right left right b a enter'</span>() {
+        alert(<span class="hljs-string">'KONAMI'</span>);
+      },
+      <span class="hljs-string">'up x down b l y r a'</span>(){
+        alert(<span class="hljs-string">'カカロットォ'</span>);
+      },
+      <span class="hljs-string">'esc'</span>: {
+        callback() {console.log(<span class="hljs-string">'esc'</span>);},
+        action: <span class="hljs-string">'keyup'</span>
+      }
+    }
+    <span class="hljs-keyword">return</span> (
+      &lt;<span class="hljs-keyword">div</span>&gt;
+        &lt;h3&gt;Type konami command&lt;/h3&gt;
+        &lt;pre&gt;
+          ↑ ↑ ↓ ↓ ← → ← → b a enter
+        &lt;/pre&gt;
+        &lt;Mousetrap mousetrap={mousetrap} /&gt;
+      &lt;/<span class="hljs-keyword">div</span>&gt;
+    );
+  }
+};
+</code></pre>
+
+      <hr />
+
+      <h4>Mixin Usage <span class="small"><a href='./mixinExample.html'>mixinExample Demo</a></span></h4>
+
+      <pre><code class="lang-javascript hljs coffeescript"><span class="hljs-reserved">import</span> React from <span class="hljs-string">'react'</span>;
+<span class="hljs-reserved">import</span> {MousetrapMixin}  from <span class="hljs-string">'react-mousetrap-mixin'</span>;
+<span class="hljs-reserved">let</span> MyMousetrap = React.createClass({
+  <span class="hljs-attribute">mixins</span>: [MousetrapMixin],
+
+  getInitialState(){
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-string">'red'</span>
+    }
+  },
+
+  getMousetrap(){
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-string">'y e l l o w'</span>:<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({
+          <span class="hljs-attribute">color</span>: <span class="hljs-string">'yellow'</span>
+        });
+      },
+      <span class="hljs-string">'b l u e'</span>:<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({
+          <span class="hljs-attribute">color</span>: <span class="hljs-string">'blue'</span>
+        });
+      }
+    };
+  },
+
+  render() {
+    <span class="hljs-reserved">let</span> style = {
+      <span class="hljs-attribute">backgroundColor</span>: <span class="hljs-keyword">this</span>.state.color
+    }
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;
+        &lt;div style={style}&gt;
+          Type <span class="hljs-string">'yellow'</span> <span class="hljs-keyword">or</span> <span class="hljs-string">'blue'</span>
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+</code></pre>
+
+    </div>
+
+</body>
+</html>
