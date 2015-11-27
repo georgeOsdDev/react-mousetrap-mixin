@@ -1,3 +1,4 @@
+
 # react-mousetrap-mixin [![Build Status](https://travis-ci.org/georgeOsdDev/react-mousetrap-mixin.svg?branch=develop)](https://travis-ci.org/georgeOsdDev/react-mousetrap-mixin) [![npm version](https://badge.fury.io/js/react-mousetrap-mixin.svg)](http://badge.fury.io/js/react-mousetrap-mixin)
 
 React component and mixin for [mousetrap](https://github.com/ccampbell/mousetrap).
@@ -25,7 +26,11 @@ propTypes: {
 ```
 
   * `mousetrap`:
-    mousetrap bindings `keys`: `callback` pairs or shapes in
+
+    mousetrap bindings `keys`: `callback` pairs
+
+    or shapes in
+
     ```
     keys: {
       callback: function(){},
@@ -49,6 +54,7 @@ let mousetrap = {
 }
 ```
 Keys, callbacks and actions are passed to `Mousetrap.bind`.
+
 See also https://craig.is/killing/mice for detail.
 
 
@@ -97,13 +103,17 @@ It is also exported as `Mixin`.
 ### `MousetrapMixin`
 
   * `getMousetrap`:
+
     Will be called on `componentDidMount`.
+
     must return mousetrap key-callback object like prop.
 
   * `addMousetrap(key, callback, action)`:
+
     Add new mousetrap binding.
 
   * `removeMousetrap(key, action)`:
+
     Remove existing mousetrap binding.
 
 
