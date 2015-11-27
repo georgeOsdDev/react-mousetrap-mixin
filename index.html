@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>React-mousetrap-mixin by georgeOsdDev</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>React-mousetrap-mixin</h1>
+        <p>React component and mixin for mousetrap</p>
+
+        <p class="view"><a href="https://github.com/georgeOsdDev/react-mousetrap-mixin">View the Project on GitHub <small>georgeOsdDev/react-mousetrap-mixin</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/georgeOsdDev/react-mousetrap-mixin/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/georgeOsdDev/react-mousetrap-mixin/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/georgeOsdDev/react-mousetrap-mixin">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="react-mousetrap-mixin--" class="anchor" href="#react-mousetrap-mixin--" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-mousetrap-mixin <a href="https://travis-ci.org/georgeOsdDev/react-mousetrap-mixin"><img src="https://travis-ci.org/georgeOsdDev/react-mousetrap-mixin.svg?branch=develop" alt="Build Status"></a> <a href="http://badge.fury.io/js/react-mousetrap-mixin"><img src="https://badge.fury.io/js/react-mousetrap-mixin.svg" alt="npm version"></a>
+</h1>
+
+<p>React component and mixin for <a href="https://github.com/ccampbell/mousetrap">mousetrap</a>.</p>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p><a href="http://georgeosddev.github.io/react-mousetrap-mixin/example/">View Demo</a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm install --save react-mousetrap-mixin</pre></div>
+
+<h2>
+<a id="component-api" class="anchor" href="#component-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component API</h2>
+
+<h3>
+<a id="mousetrap" class="anchor" href="#mousetrap" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>Mousetrap</code>
+</h3>
+
+<h4>
+<a id="props" class="anchor" href="#props" aria-hidden="true"><span class="octicon octicon-link"></span></a>Props</h4>
+
+<div class="highlight highlight-source-js"><pre>propTypes<span class="pl-k">:</span> {
+  mousetrap<span class="pl-k">:</span> <span class="pl-smi">React</span>.<span class="pl-c1">P</span>ropTypes.<span class="pl-c1">object</span>
+}</pre></div>
+
+<ul>
+<li>
+<code>mousetrap</code>:
+mousetrap bindings <code>keys</code>: <code>callback</code> pairs or shapes in
+<code>
+keys: {
+  callback: function(){},
+  action: function()
+}
+</code>
+</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>let mousetrap = {
+  'up up down down left right left right b a'() {
+    alert('Konami');
+  },
+  'up x down b l y r a'(){
+    alert('カカロットォ');
+  },
+  'esc':{
+    callback() {console.log('esc');},
+    action: 'keyup'
+  }
+}
+</code></pre>
+
+<p>Keys, callbacks and actions are passed to <code>Mousetrap.bind</code>.
+See also <a href="https://craig.is/killing/mice">https://craig.is/killing/mice</a> for detail.</p>
+
+<h3>
+<a id="usage-example" class="anchor" href="#usage-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage example</h3>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">import</span> <span class="pl-smi">Mousetrap</span>  <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-mousetrap-mixin<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">class</span> <span class="pl-en">App</span> <span class="pl-k">extends</span> <span class="pl-en">React.Component</span> {
+  <span class="pl-en">constructor</span>(<span class="pl-smi">props</span>) {
+    <span class="pl-v">super</span>(props);
+    <span class="pl-smi">this</span>.<span class="pl-smi">state</span> <span class="pl-k">=</span> {}
+  }
+
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">let</span> mousetrap <span class="pl-k">=</span> {
+      <span class="pl-s"><span class="pl-pds">'</span>up up down down left right left right b a<span class="pl-pds">'</span></span>() {
+        <span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>Konami<span class="pl-pds">'</span></span>);
+      },
+      <span class="pl-s"><span class="pl-pds">'</span>up x down b l y r a<span class="pl-pds">'</span></span>(){
+        <span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>カカロットォ<span class="pl-pds">'</span></span>);
+      },
+      <span class="pl-s"><span class="pl-pds">'</span>esc<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+        <span class="pl-en">callback</span>() {<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>esc<span class="pl-pds">'</span></span>);},
+        action<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>keyup<span class="pl-pds">'</span></span>
+      }
+    }
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>Mousetrap mousetrap<span class="pl-k">=</span>{mousetrap} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+    );
+  }
+};</pre></div>
+
+<p>See also <a href="https://github.com/georgeOsdDev/react-mousetrap-mixin/tree/develop/example">example</a></p>
+
+<hr>
+
+<h2>
+<a id="mixin-api" class="anchor" href="#mixin-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mixin API</h2>
+
+<p>It is also exported as <code>Mixin</code>.</p>
+
+<h3>
+<a id="mousetrapmixin" class="anchor" href="#mousetrapmixin" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>MousetrapMixin</code>
+</h3>
+
+<ul>
+<li><p><code>getMousetrap</code>:
+Will be called on <code>componentDidMount</code>.
+must return mousetrap key-callback object like prop.</p></li>
+<li><p><code>addMousetrap(key, callback, action)</code>:
+Add new mousetrap binding.</p></li>
+<li><p><code>removeMousetrap(key, action)</code>:
+Remove existing mousetrap binding.</p></li>
+</ul>
+
+<h3>
+<a id="usage-example-1" class="anchor" href="#usage-example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage example</h3>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">import</span> <span class="pl-smi">React</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> {<span class="pl-smi">MousetrapMixin</span>}  <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-mousetrap-mixin<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">let</span> MyMousetrap <span class="pl-k">=</span> <span class="pl-smi">React</span>.<span class="pl-en">createClass</span>({
+  mixins<span class="pl-k">:</span> [MousetrapMixin],
+
+  <span class="pl-en">getInitialState</span>(){
+    <span class="pl-k">return</span> {
+      color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>red<span class="pl-pds">'</span></span>,
+      greenChecked<span class="pl-k">:</span> <span class="pl-c1">false</span>
+    }
+  },
+  <span class="pl-en">getMousetrap</span>(){
+    <span class="pl-k">return</span> {
+      <span class="pl-s"><span class="pl-pds">'</span>y e l l o w<span class="pl-pds">'</span></span><span class="pl-k">:</span>() <span class="pl-k">=&gt;</span> {
+        <span class="pl-smi">this</span>.<span class="pl-en">setState</span>({
+          color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>yellow<span class="pl-pds">'</span></span>
+        });
+      },
+      <span class="pl-s"><span class="pl-pds">'</span>b l u e<span class="pl-pds">'</span></span><span class="pl-k">:</span>() <span class="pl-k">=&gt;</span> {
+        <span class="pl-smi">this</span>.<span class="pl-en">setState</span>({
+          color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>blue<span class="pl-pds">'</span></span>
+        });
+      }
+    };
+  },
+
+  <span class="pl-en">onChange</span>(<span class="pl-smi">event</span>){
+    <span class="pl-smi">this</span>.<span class="pl-en">setState</span>({
+      greenChecked<span class="pl-k">:</span> <span class="pl-smi">event</span>.<span class="pl-c1">target</span>.<span class="pl-c1">checked</span>
+    }, () <span class="pl-k">=&gt;</span> {
+      <span class="pl-k">if</span> (<span class="pl-smi">this</span>.<span class="pl-smi">state</span>.<span class="pl-smi">greenChecked</span>){
+        <span class="pl-smi">this</span>.<span class="pl-en">addMousetrap</span>(<span class="pl-s"><span class="pl-pds">'</span>g r e e n<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+          <span class="pl-smi">this</span>.<span class="pl-en">setState</span>({
+            color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>green<span class="pl-pds">'</span></span>
+          });
+        });
+      } <span class="pl-k">else</span> {
+        <span class="pl-smi">this</span>.<span class="pl-en">removeMousetrap</span>(<span class="pl-s"><span class="pl-pds">'</span>g r e e n<span class="pl-pds">'</span></span>);
+      }
+    });
+  },
+
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">let</span> style <span class="pl-k">=</span> {
+      backgroundColor<span class="pl-k">:</span> <span class="pl-smi">this</span>.<span class="pl-smi">state</span>.<span class="pl-c1">color</span>
+    }
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>div style<span class="pl-k">=</span>{style}<span class="pl-k">&gt;</span>
+          Type <span class="pl-s"><span class="pl-pds">'</span>yellow<span class="pl-pds">'</span></span> or <span class="pl-s"><span class="pl-pds">'</span>blue<span class="pl-pds">'</span></span>
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>checkbox<span class="pl-pds">'</span></span> <span class="pl-c1">onChange</span><span class="pl-k">=</span>{<span class="pl-smi">this</span>.<span class="pl-smi">onChange</span>} checked<span class="pl-k">=</span>{<span class="pl-smi">this</span>.<span class="pl-smi">state</span>.<span class="pl-smi">greenChecked</span>} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        Enable <span class="pl-s"><span class="pl-pds">'</span>green<span class="pl-pds">'</span></span>
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+    );
+  }
+});</pre></div>
+
+<p>See also <a href="https://github.com/georgeOsdDev/react-mousetrap-mixin/tree/develop/example/MyMousetrap.js">example</a></p>
+
+<div class="highlight highlight-source-shell"><pre>npm install
+npm run start:example</pre></div>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm <span class="pl-c1">test</span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/georgeOsdDev">georgeOsdDev</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
