@@ -6,7 +6,7 @@ import Mousetrap from 'mousetrap';
 import chai from 'chai';
 import sinon from 'sinon';
 let expect = chai.expect;
-import MousetrapComponent from '../../lib/component/Mousetrap';
+import MousetrapComponent from '../../src/component/Mousetrap';
 
 
 describe('Test of Mousetrap', () => {
