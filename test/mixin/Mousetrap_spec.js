@@ -4,7 +4,7 @@ import ReactTesuUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import sinon from 'sinon';
 let expect = chai.expect;
-import MousetrapMixin from '../../lib/mixin/Mousetrap';
+import MousetrapMixin from '../../src/mixin/Mousetrap';
 
 let MyMixin = React.createClass({
   mixins: [MousetrapMixin],
